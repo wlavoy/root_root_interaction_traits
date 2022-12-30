@@ -67,10 +67,12 @@ for i in range(0,5183):
     #reset j value after while loop so we start from the top position and work our way down
     j = 0
 
+#check total counts
 print("Total Root Count: " + str(root))
 print("Total Background Count: " +str(background))
 
-density = (root/background)
+#density calculation of root points/total points
+density = (root/(background+root))
 print("Density of Roots/Background: ")
 print(density)
 
