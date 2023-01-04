@@ -1,4 +1,8 @@
-'''Trying to load the image and classify pixels'''
+'''
+A simple root density measurement based on pixel classification from ilastik
+Pixels are classified as either background or roots
+Walking through the image and counting pixles allows a simple density measurement
+'''
 
 from PIL import Image
 import matplotlib.pyplot as plt
@@ -12,22 +16,12 @@ import numpy as np
 #load at home
 img = Image.open('/home/wlavoy/workDir/root_root_interaction_traits/2D_model_traits_work/images/test_classes.tiff')
 
-#check image
-#img.show()
-
 #put tiff into np array
 img_array = np.array(img)
 
 #plot array in plt
 data = plt.imshow(img_array)
 
-
-#draw the plot
-#plt.show()
-
-#determine how large the array is
-#print(img_array.shape)
-# 3456 by 5184
 
 #empty variables for walking
 j = 0
@@ -37,8 +31,6 @@ background = 0
 
 #start position variable
 startPos = []
-
-
 
 #want to walk from top to bottom one column at a time
 for i in range(0,5183):
@@ -59,7 +51,7 @@ for i in range(0,5183):
             j += 1
         
         #if position is not a root it must be background
-        elif img_array[startPos[0], startPos[1]] != 1:
+        elif img_array[startPos[0], startPos[1]] == 2:
             background += 1
             #print("background count: " + str(background))
             j += 1
